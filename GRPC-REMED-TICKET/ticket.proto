@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package ticket;
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse) {}
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse) {}
+  rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse) {}
+}
+
+message CreateOrderRequest {
+  string order_id = 1;
+  string user_id = 2;
+  string ticket = 3;
+}
+
+message CreateOrderResponse {
+  bool success = 1;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  Order order = 1;
+}
+
+message UpdateOrderRequest {
+  string order_id = 1;
+  string user_id = 2;
+  string ticket = 3;
+}
+
+message UpdateOrderResponse {
+  bool success = 1;
+}
+
+message CancelOrderRequest {
+  string order_id = 1;
+}
+
+message CancelOrderResponse {
+  bool success = 1;
+}
+
+message Order {
+  string order_id = 1;
+  string user_id = 2;
+  string ticket = 3;
+}
